@@ -25,10 +25,11 @@ hsv_color = cv2.cvtColor(np.uint8([[bgr_color]]), cv2.COLOR_BGR2HSV)[0][0]
 
 # Show current BGR color and HSV value
 st.write(f"**BGR:** {bgr_color}")
-st.write(f"**HSV:** {tuple(hsv_color)}")
+st.write(f"**HSV:** ({hsv_color[0]}, {hsv_color[1]}, {hsv_color[2]})")  # Display without np.uint8
 
-# Convert HSV to HEX (just for visualization)
-color_hex = "#{:02x}{:02x}{:02x}".format(*cv2.cvtColor(np.uint8([[bgr_color]]), cv2.COLOR_BGR2RGB)[0][0])
+# Convert HSV to RGB (just for visualization)
+color_rgb = cv2.cvtColor(np.uint8([[bgr_color]]), cv2.COLOR_BGR2RGB)[0][0]
+color_hex = "#{:02x}{:02x}{:02x}".format(color_rgb[0], color_rgb[1], color_rgb[2])
 
 # Display color box
 st.markdown(
